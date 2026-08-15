@@ -30,6 +30,24 @@ hello
 }
 ```
 
+## 실행 화면
+
+### Spring Boot 서버 정상 실행
+
+![Spring Boot 서버 정상 실행](docs/images/01-springboot-server-running.png)
+
+### Hello API 응답
+
+![GET /hello 성공 응답](docs/images/02-hello-api-success.png)
+
+### 단일 회원 JSON 응답
+
+![GET /member 단일 회원 JSON 응답](docs/images/03-member-json-response.png)
+
+### 회원 목록 JSON 응답
+
+![GET /members 회원 목록 JSON 응답](docs/images/04-members-list-json-response.png)
+
 ## 실행 방법
 
 Windows에서 다음 명령으로 애플리케이션을 실행합니다.
