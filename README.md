@@ -61,7 +61,7 @@ Client -> Controller -> Service -> Repository -> JPA -> MySQL
 - [x] 회원 삭제
 - [x] MySQL 연동
 - [x] MySQL 영구 저장 확인
-- [ ] Docker 컨테이너화
+- [x] Docker 컨테이너화
 
 ## 데이터 저장 방식 변화
 
@@ -115,6 +115,18 @@ Spring Boot를 재시작한 뒤 API와 MySQL에서 같은 회원 데이터가 �
 
 ![MySQL 직접 조회](docs/images/15-mysql-direct-select-success.png)
 
+### 4. Docker 컨테이너화
+
+```text
+Docker image build → container run → MySQL 연결 → GET /members 조회 성공
+```
+
+![Docker 이미지 빌드 성공](docs/images/16-docker-image-build-success.png)
+
+![Docker 컨테이너 기동 성공](docs/images/17-docker-container-start-success.png)
+
+![Docker 컨테이너에서 MySQL 회원 조회 성공](docs/images/18-docker-container-api-mysql-success.png)
+
 그 밖의 단계별 캡처는 [`docs/images/`](docs/images/)에서 확인할 수 있습니다.
 
 ## 트러블슈팅
@@ -144,6 +156,5 @@ spring.datasource.password=${DB_PASSWORD}
 
 ## 다음 단계
 
-1. Docker 컨테이너화
-2. 테스트 및 예외 처리 보강
-3. AWS / Kubernetes 배포
+1. 테스트 및 예외 처리 보강
+2. AWS / Kubernetes 배포
