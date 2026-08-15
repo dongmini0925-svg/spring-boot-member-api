@@ -30,6 +30,14 @@ hello
 }
 ```
 
+### `GET /members`
+
+현재 메모리에 저장된 회원 목록을 JSON 배열로 반환합니다.
+
+### `POST /members`
+
+요청 본문의 회원 JSON을 메모리 목록에 추가합니다. 아직 데이터베이스를 사용하지 않으므로 서버를 재시작하면 추가한 회원은 사라집니다.
+
 ## 실행 화면
 
 ### Spring Boot 서버 정상 실행
@@ -48,6 +56,12 @@ hello
 
 ![GET /members 회원 목록 JSON 응답](docs/images/04-members-list-json-response.png)
 
+### POST 등록 후 GET 목록 반영(메모리 저장)
+
+`POST /members`로 민수(`id=4`)를 등록한 뒤 `GET /members`에서 네 명의 회원이 함께 조회되는 것을 확인했습니다.
+
+![POST 등록 후 GET 목록 반영(메모리 저장)](docs/images/08-member-created-and-list-updated.png)
+
 ## 실행 방법
 
 Windows에서 다음 명령으로 애플리케이션을 실행합니다.
@@ -60,6 +74,7 @@ Windows에서 다음 명령으로 애플리케이션을 실행합니다.
 
 - `http://localhost:8080/hello`
 - `http://localhost:8080/member`
+- `http://localhost:8080/members`
 
 ## 진행 계획
 
