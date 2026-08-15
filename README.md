@@ -1,7 +1,7 @@
 # spring-boot-member-api
 
 Spring Boot로 회원 CRUD REST API를 단계별로 구현한 학습 프로젝트입니다.
-Controller / Service / Repository 계층을 분리하고 Spring Data JPA를 적용했으며, H2 실습을 거쳐 MySQL 8.4에 데이터를 영구 저장하는 과정까지 진행했습니다.
+Controller / Service / Repository 계층을 분리하고 Spring Data JPA를 적용했으며, H2 실습을 거쳐 MySQL 8.4에 데이터를 영구 저장하고 Docker와 Kubernetes로 배포하는 과정까지 진행했습니다.
 
 ## 기술 스택
 
@@ -12,6 +12,8 @@ Controller / Service / Repository 계층을 분리하고 Spring Data JPA를 적�
 - Spring Data JPA
 - H2 (학습 단계)
 - MySQL 8.4.11
+- Docker
+- Kubernetes
 
 ## 아키텍처
 
@@ -23,6 +25,12 @@ Client -> Controller -> Service -> Repository -> JPA -> MySQL
 - `Service`: 회원 CRUD 비즈니스 로직 처리
 - `Repository`: JPA를 통한 데이터 접근
 - `MySQL`: 애플리케이션과 분리된 영구 데이터 저장소
+
+Kubernetes 배포 환경에서는 다음 경로로 전체 연결을 확인했습니다.
+
+```text
+Browser → port-forward → Kubernetes Service → Spring Boot Pod → JPA → MySQL
+```
 
 ## API
 
@@ -62,6 +70,7 @@ Client -> Controller -> Service -> Repository -> JPA -> MySQL
 - [x] MySQL 연동
 - [x] MySQL 영구 저장 확인
 - [x] Docker 컨테이너화
+- [x] Kubernetes 배포 및 Service 경유 통합 확인
 
 ## 데이터 저장 방식 변화
 
@@ -127,6 +136,16 @@ Docker image build → container run → MySQL 연결 → GET /members 조회 �
 
 ![Docker 컨테이너에서 MySQL 회원 조회 성공](docs/images/18-docker-container-api-mysql-success.png)
 
+### 5. Kubernetes 배포
+
+```text
+Browser → port-forward → Kubernetes Service → Spring Boot Pod → JPA → MySQL
+```
+
+`kubectl port-forward service/spring-crud-service 8080:8080` 상태에서 `/members` API가 MySQL의 회원 데이터를 정상 조회하는 것을 확인했습니다.
+
+![Kubernetes Service를 통한 API와 MySQL 통합 성공](docs/images/21-kubernetes-service-api-mysql-success.png)
+
 그 밖의 단계별 캡처는 [`docs/images/`](docs/images/)에서 확인할 수 있습니다.
 
 ## 트러블슈팅
@@ -157,4 +176,4 @@ spring.datasource.password=${DB_PASSWORD}
 ## 다음 단계
 
 1. 테스트 및 예외 처리 보강
-2. AWS / Kubernetes 배포
+2. AWS 배포
