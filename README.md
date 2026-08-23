@@ -208,7 +208,4 @@ spring.datasource.username=${DB_USERNAME:springuser}
 spring.datasource.password=${DB_PASSWORD}
 ```
 
-## 다음 단계
 
-- Bash/Python 운영 자동화 기초
-- AWS 배포 및 자격증 준비
